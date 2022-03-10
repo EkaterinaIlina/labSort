@@ -34,10 +34,10 @@ namespace labSort
         //   T:System.ArgumentException:
         //     If from is greater than or equal to until.
         public static int[] GenerateInt(
-            int arraySize, 
-            int from, 
-            int until, 
-            double sortRatio, 
+            int arraySize,
+            int from,
+            int until,
+            double sortRatio,
             int sortedPosition
             )
         {
@@ -58,7 +58,7 @@ namespace labSort
             {
                 sortedArray[i] = random.Next(from, until);
             }
-           sortedArray=  Quicksort.Sort(sortedArray);
+            Quicksort.Sort(sortedArray);
 
             int j = 0;
             for (int i = 0; i < arraySize; i++)
@@ -100,10 +100,10 @@ namespace labSort
         //   T:System.ArgumentException:
         //     If from is greater than or equal to until.
         public static double[] GenerateDouble(
-            int arraySize, 
-            double from, 
-            double until, 
-            double sortRatio, 
+            int arraySize,
+            double from,
+            double until,
+            double sortRatio,
             int sortedPosition
             )
         {
@@ -124,7 +124,7 @@ namespace labSort
             {
                 sortedArray[i] = random.NextDouble() * (until - from) + from;
             }
-            sortedArray = Quicksort.Sort(sortedArray);
+            Quicksort.Sort(sortedArray);
 
             int j = 0;
             for (int i = 0; i < arraySize; i++)
@@ -159,12 +159,15 @@ namespace labSort
 
         private static int CheckSortedPosition(int sortedPosition, int arraySize, int sortedSize)
         {
-            return _ = sortedPosition switch
+            int pos;
+            switch (sortedPosition)
             {
-                1 => 0,
-                2 => (arraySize / 2) - (sortedSize / 2),
-                _ => arraySize - sortedSize,
-            };
+                case 1: pos = 0; break;
+                case 2: pos = (arraySize / 2) - (sortedSize / 2); break;
+                default: pos = arraySize - sortedSize; break;
+            }
+            return pos;
         }
     }
 }
+
